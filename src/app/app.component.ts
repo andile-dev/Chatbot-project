@@ -1,12 +1,32 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'interface_design';
+  query = '';
+  intent: string | null = null;
+
+  sendQuery() {
+    if (!this.query.trim()) return;
+    fetch('http://localhost:8082/api/intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `query=${encodeURIComponent(this.query)}`
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.intent = data.intent;
+    })
+    .catch(err => {
+      console.error('Request failed:', err);
+      this.intent = 'error';
+    });
+  }
 }
