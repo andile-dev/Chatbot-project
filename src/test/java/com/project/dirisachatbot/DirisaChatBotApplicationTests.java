@@ -1,13 +1,13 @@
-package com.example.Chatbot;
+package com.project.dirisachatbot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ChatbotApplicationTests {
+class DirisaChatBotApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
