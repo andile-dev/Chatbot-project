@@ -17,7 +17,7 @@ public  class Intent {
     private IntentService intentService;
 
     @GetMapping("/getintent/{user_input}")
-    public ResponseEntity<Map<String , String>>  getIntent(@PathVariable String user_input ){
+    public ResponseEntity<String>  getIntent(@PathVariable String user_input ){
 
         return ResponseEntity.ok(intentService.getIntent(user_input));
     }
