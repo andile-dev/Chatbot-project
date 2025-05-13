@@ -31,5 +31,4 @@ public class User {
     @Size(max = 120)
     private String password;
 
-    // Add other fields as needed (name, roles, etc.)
 }
